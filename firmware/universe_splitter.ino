@@ -34,7 +34,7 @@ void setup() {
   strip.setPixelColor(0, strip.Color(0, 0, 0));
   
   pinMode(SIGNAL_PIN, INPUT_PULLUP);
-  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(BUTTON_PIN, INPUT);
   attachInterrupt(digitalPinToInterrupt(SIGNAL_PIN), eventDetected, FALLING);
   attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), wakeUp, RISING);
 }
