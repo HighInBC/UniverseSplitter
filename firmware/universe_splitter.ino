@@ -84,7 +84,12 @@ void handleDisplayState() {
   unsigned int intensity = display_age < DISPLAY_SOLID ? 255 : map(display_age, DISPLAY_SOLID, DISPLAY_SOLID + DISPLAY_FADE, 255, 0);
   unsigned long AB_time = eventTimes[1] - eventTimes[0];
   unsigned long BC_time = eventTimes[2] - eventTimes[1];
-  if (abs(AB_time - BC_time) < INTERVAL_TOLERANCE) { // Too close to call, try again
+  unsigned long difference =
+    AB_time > BC_time
+        ? AB_time - BC_time
+        : BC_time - AB_time;
+
+  if (difference < INTERVAL_TOLERANCE) {
     display_start = 0;
     state = STATE_COUNT_1;
     return;
