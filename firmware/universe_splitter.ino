@@ -22,7 +22,7 @@
 Adafruit_NeoPixel strip(1, NEO_PIN, NEO_GRB + NEO_KHZ800);
 
 volatile unsigned long eventTimes[3];
-volatile int state = STATE_SLEEP;
+volatile uint8_t state = STATE_SLEEP;
 volatile unsigned long interruptDebounce = 0;
 unsigned long display_start = 0;
 
